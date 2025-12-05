@@ -271,24 +271,7 @@ const nextConfig: NextConfig = {
   },
 
 
-  webpack: (config, { isServer }) => {
-    if (!isServer) {
-      config.plugins = config.plugins || []
-      config.plugins.push(
-        new (require('webpack').NormalModuleReplacementPlugin)(
-          /providers\/utils$/,
-          require.resolve('./providers/utils.client.ts')
-        )
-      )
-      config.plugins.push(
-        new (require('webpack').NormalModuleReplacementPlugin)(
-          /@\/blocks\/registry$/,
-          require.resolve('./lib/noop.js')
-        )
-      )
-    }
-    return config
-  }
+ 
 }
 
 export default nextConfig
